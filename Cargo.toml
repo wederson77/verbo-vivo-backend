@@ -1,0 +1,42 @@
+[package]
+name = "api-biblia" # Nome do seu projeto
+version = "0.1.0" # Versão do projeto
+edition = "2021" # Versão do Rust Edition que está sendo usada
+
+# Informações extras, como autores e descrição (opcional)
+authors = ["Seu Nome <seu.email@example.com>"]
+description = "API para buscar versículos bíblicos em um arquivo txt."
+license = "MIT"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+
+[dependencies]
+axum = { version = "0.6.20", features = ["headers"] }
+tokio = { version = "1", features = ["full"] } # Tokio é necessário para rodar o servidor assíncrono
+serde = { version = "1.0", features = ["derive"] }# Serde para serialização/deserialização
+hyper = { version = "0.14", features = ["full"] }
+serde_json = "1.0" # Serde JSON para trabalhar com JSON
+tower = "0.4" # Tower é uma biblioteca que fornece abstrações para middlewares
+tower-http = { version = "0.4", features = ["cors"] } # Tower HTTP, usado aqui para o CORS
+regex = "1" 
+actix-web = "4.0"  # Verifique a versão mais recente ou compatível
+actix-cors = "0.6"
+uuid = { version = "1.1", features = ["v4"] }
+crc-any = "2.0.0"
+jsonwebtoken = "9.2"
+headers = "0.3" 
+lazy_static = "1.4.0"
+bigdecimal = "0.4"  # Se ainda não tiver adicionado
+sqlx = { version = "0.7", features = ["runtime-tokio-native-tls", "postgres", "bigdecimal"] }
+dotenvy = "0.15"
+bcrypt = "0.12.1"
+anyhow = "1.0"
+actix-limitation = "0.2"
+reqwest = { version = "0.12.12", features = ["json", "rustls-tls", "blocking"] }
+num_cpus = "1.16"
+env_logger = "0.11.6"
+log = "0.4.25"
+chrono = { version = "0.4", features = ["serde"] }
