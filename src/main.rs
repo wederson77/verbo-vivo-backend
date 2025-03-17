@@ -68,12 +68,14 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(web::Data::new(pool.clone()))
             .wrap(middleware::Logger::default())
-            .wrap(Cors::default()
-                .allowed_origin("http://localhost:3000")
-                .allowed_methods(vec!["GET", "POST", "PUT", "DELETE"])
-                .allowed_headers(vec!["Content-Type", "Authorization"])
-                .supports_credentials()
-                .max_age(3600))
+           .wrap(Cors::default()
+            .allowed_origin("https://verbovivo-seven.vercel.app") // Permite o frontend da Vercel
+            .allowed_origin("http://localhost:3000") // Permite o frontend local
+            .allowed_methods(vec!["GET", "POST", "PUT", "DELETE"])
+            .allowed_headers(vec!["Content-Type", "Authorization"])
+            .supports_credentials()
+            .max_age(3600))
+
             .configure(configure_routes)
     })
     .workers(num_workers)
